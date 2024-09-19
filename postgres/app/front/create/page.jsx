@@ -6,8 +6,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 export default function Front() {
 
-
-    
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [response, setResponse] = useState("");
@@ -24,6 +22,7 @@ export default function Front() {
     });
     const data = await res.json();
     setResponse(`${data.message}`);
+ 
     if(data.status=="2001"){
       toast("User already Exist")
     setResponse(`${data.message}`);
@@ -34,10 +33,11 @@ export default function Front() {
     setResponse(`${data.message}`);
     setEmail("");
     setName("")
-
     }
   };
-
+  setTimeout(() => {
+    setResponse("")
+  }, 10000);
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <h1 className="text-3xl font-bold mb-6 text-gray-800">Create User</h1>

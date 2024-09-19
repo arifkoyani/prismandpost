@@ -13,12 +13,12 @@ export async function POST(req) {
       },
     });
     console.log(user);
-    if (user) {
-      return NextResponse.json(
-        { message: "User is Exist", status: 2001 },
-        { status: 201 }
-      );
-    }
+    // if (user) {
+    //   return NextResponse.json(
+    //     { message: "User is Exist", status: 2001 },
+    //     { status: 201 }
+    //   );
+    // }
     await prisma.user.create({
       data: {
         name,
@@ -30,6 +30,7 @@ export async function POST(req) {
       { status: 200 }
     );
   } catch (error) {
+    console.log(error)
     return NextResponse.json(
       { error: error.message || "Something went wrong" },
       { status: 500 }
